@@ -11,7 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140727195054) do
+ActiveRecord::Schema.define(version: 20140729081551) do
+
+  create_table "goals", force: true do |t|
+    t.integer  "value"
+    t.integer  "type_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "goals", ["type_id"], name: "index_goals_on_type_id"
+  add_index "goals", ["user_id"], name: "index_goals_on_user_id"
+
+  create_table "milestones", force: true do |t|
+    t.date     "achieved_at"
+    t.integer  "value"
+    t.integer  "type_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "milestones", ["type_id"], name: "index_milestones_on_type_id"
+  add_index "milestones", ["user_id"], name: "index_milestones_on_user_id"
+
+  create_table "types", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"

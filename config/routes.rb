@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'dashboard/show'
 
   get 'login',   to: 'sessions#new',     as: 'login'
@@ -6,7 +7,11 @@ Rails.application.routes.draw do
   get 'logout',  to: 'sessions#destroy', as: 'logout'
 
   resources :sessions
-  resources :users
+
+  resources :users do
+    resources :milestones
+    resources :goals
+  end
 
   root 'dashboard#show'
 

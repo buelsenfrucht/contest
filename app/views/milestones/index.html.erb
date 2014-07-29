@@ -1,0 +1,30 @@
+<h1>Listing milestones</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Typ</th>
+      <th>Wert</th>
+      <th style="width: 190px; text-align: center;"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @milestones.each do |milestone| %>
+      <tr>
+        <td><%= l milestone.created_at %></td>
+        <td><%= milestone.type %></td>
+        <td><%= milestone.value %></td>
+        <td style="width: 190px; text-align: center;">
+          <%= link_to 'Edit', edit_user_milestone_path(@user, milestone), class: 'btn btn-default btn-sm' %>
+          <%= link_to 'Destroy', user_milestone_path(@user, milestone), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Meilenstein anlegen', new_user_milestone_path(@user), class: 'btn btn-default btn-lg' %>
