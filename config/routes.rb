@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :users do
-    resources :milestones
-    resources :goals
+    resources :milestones, :except => :show
+    resources :goals, :except => :show
   end
 
   root 'dashboard#show'
