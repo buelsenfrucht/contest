@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+  has_many :activities
   has_many :goals
   has_many :milestones
 
@@ -9,18 +10,17 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  def score_for_user(user)
+  def score
     return nil if goals.size == 0
-    score = 0
+    score = 0.0
     goals.each do |goal|
-      milestones_per_type = Milestone.for_user(user).where(type: goal.type).order('created_at ASC').all
-      next if milestones_per_type.size == 0
-
-      first_milestone = milestones_per_type.last
-      relevant_milestone = milestones_per_type.last
-      diff = (relevant_milestone - first_milestone).abs
-      goal.value
+      score = score + goal.score
     end
+    return (score / goals.size.to_f)
+  end
+
+  def to_s
+    name
   end
 
 end

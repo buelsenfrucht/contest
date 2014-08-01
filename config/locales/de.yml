@@ -7,11 +7,15 @@ de:
     weight: Gewicht
   activerecord:
     models:
+      activity: Aktivität
       user: Benutzer
       goal: Ziel
       milestone: Meilenstein
       type: Typ
     attributes:
+      activity:
+        body: Aktivität
+        publish: Öffentlich?
       milestone:
         type: Typ
         user: Benutzer
@@ -58,7 +62,7 @@ de:
     - Samstag
     formats:
       default: ! '%d.%m.%Y'
-      long: ! '%e. %B %Y'
+      long: ! '%d. %B %Y'
       short: ! '%e. %b'
     month_names:
     -

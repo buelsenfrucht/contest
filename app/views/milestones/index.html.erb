@@ -1,3 +1,5 @@
+<%= link_to 'Neuer Meilenstein', new_user_milestone_path(@user), class: 'btn btn-primary btn-lg' %><br /><br />
+
 <h1>Meine Meilensteine</h1>
 
 <table class="table table-bordered">
@@ -23,7 +25,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'Meilenstein anlegen', new_user_milestone_path(@user), class: 'btn btn-default btn-lg' %>

@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require 'bootstrap-switch.min'
  *= require_self
  */
 
@@ -19,7 +20,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body { padding-top: 70px; }
+body {
+  padding-top: 60px;
+  padding-bottom: 55px;
+}
 
 .subtitle {
   width: 100%;

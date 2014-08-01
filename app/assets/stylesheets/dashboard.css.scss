@@ -1,3 +1,56 @@
 // Place all the styles related to the Dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$myBorderColor: #e7e7e7;
+
+.stats {
+  height: 120px;
+  margin-top: -11px;
+  color: #545454;
+
+  .my-stat {
+    height: 120px;
+    border: 1px solid $myBorderColor;
+    border-right: none;
+    font-size: 50px;
+    line-height: 80px;
+    vertical-align: middle;
+    padding: 20px;
+  }
+
+  .splitted-stats {
+    position: relative;
+    height: 120px;
+    padding: 0px;
+    
+    .split-stat {
+      text-align: center;
+      height: 50%;
+      border: 1px solid $myBorderColor;
+      width: 100%;
+      padding: 10px;
+      &:first-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.activity-stream {
+  .activity {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $myBorderColor;
+
+    .ac-date {
+      font-size: 12px;
+    }
+
+    .ac-body {
+      padding-top: 3px;
+      font-size: 16px;
+      color: #222222;
+    }
+  }
+}

@@ -1,0 +1,29 @@
+<%= link_to 'Neue Aktivität', new_user_activity_path(@user), class: 'btn btn-primary btn-lg' %><br /><br />
+
+<h1>Meine Aktivitäten</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Aktivität</th>
+      <th class="text-center" nowrap>Öffentlich</th>
+      <th style="width: 50px;"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= link_to truncate(activity.body, length: 50), [@user, activity] %></td>
+        <td class="text-center" nowrap><%= activity.publish ? 'Ja' : 'Nein' %></td>
+        <td class="text-center">
+          <%= link_to [@user, activity], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

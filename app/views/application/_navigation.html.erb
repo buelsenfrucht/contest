@@ -17,7 +17,8 @@
 
           <ul class="nav navbar-nav">
             <li><%= link_to 'Home', root_url %></li>
-            <li><%= link_to 'Meilensteine', user_milestones_url(current_user) if current_user %></li>
+            <li><%= link_to 'Meilensteine', user_milestones_url(current_user) %></li>
+            <li><%= link_to 'Meine Aktivitäten', user_activities_url(current_user) %></li>
             <li><%= link_to 'Meine Ziele', user_goals_url(current_user) %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :users do
+    resources :activities
     resources :milestones, :except => :show
     resources :goals, :except => [:show, :update, :edit] do
       get 'starting_point'

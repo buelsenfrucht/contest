@@ -1,7 +1,6 @@
 class GoalsController < ApplicationController
+  include UserPermission, UserDependent
 
-  before_action :check_permission
-  before_action :set_user
   before_action :set_goal, only: [:show, :destroy]
 
   # GET /goals
@@ -47,16 +46,6 @@ class GoalsController < ApplicationController
   end
 
   private
-
-    def check_permission
-      if !current_user || params[:user_id].to_i != current_user.id.to_i
-        render file: 'public/401.html', :status => :unauthorized
-      end
-    end
-
-    def set_user
-      @user = User.find(params[:user_id])
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_goal

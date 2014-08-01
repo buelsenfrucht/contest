@@ -1,2 +1,35 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<% if @my_goals.size > 1  %>
+  <div class="stats">
+    <div class="row">
+      <div class="col-xs-8 my-stat text-center"><%= current_user.score.round(1) %>%</div>
+      <div class="col-xs-4 splitted-stats">
+        <% @my_goals.each do |goal| %>
+          <div class="split-stat">
+            <strong><%= goal.type %></strong><br/>
+            <%= goal.score.round(2) %> %
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="stats">
+    <div class="row">
+      <div class="col-xs-12 my-stat text-center">11%</div>
+    </div>
+  </div>
+<% end %>
+
+<div class="activity-stream">
+  <h4>Aktivitäten</h4>
+  <% @activities.each do |activity| %>
+    <div class="activity">
+      <div class="ac-date">
+        <%= l activity.created_at.to_date, :format => :long %>, <strong><%= activity.user %></strong>
+      </div>
+      <div class="ac-body">
+        <%= truncate(activity.body, length: 50) %>
+      </div>
+    </div>
+  <% end %>
+</div>
