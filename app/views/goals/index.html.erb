@@ -1,0 +1,31 @@
+<h1>Meine Ziele</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Typ</th>
+      <th>Ziel</th>
+      <th>Start</th>
+      <th style="width: 210px; text-align: center;"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @goals.each do |goal| %>
+      <% milestone = goal.first_milestone %>
+      <tr>
+        <td><%= goal.type %></td>
+        <td><%= goal.value %></td>
+        <td><%= "#{milestone.value} am #{l milestone.achieved_at}" if milestone %></td>
+        <td>
+          <%= link_to 'Startpunkt setzen', user_goal_starting_point_path(@user, goal), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Löschen', [@user, goal], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Ziel anlegen', new_user_goal_path(@user), class: 'btn btn-primary btn-lg' %>

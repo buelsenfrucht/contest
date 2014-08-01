@@ -1,4 +1,7 @@
 de:
+  boolean:
+    true: Ja
+    false: Nein
   types:
     points: Punkte
     weight: Gewicht
@@ -13,6 +16,15 @@ de:
         type: Typ
         user: Benutzer
         value: Wert
+      goal:
+        type: Typ
+        user: Benutzer
+        value: Wert
+      user:
+        name: Name
+        email: E-Mailadresse
+        password: Passwort
+        password_confirmation: Passwort wiederholen
   date:
     abbr_day_names:
     - So

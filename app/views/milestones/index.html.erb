@@ -13,7 +13,7 @@
   <tbody>
     <% @milestones.each do |milestone| %>
       <tr>
-        <td><%= link_to l(milestone.created_at, :format => :short), edit_user_milestone_path(@user, milestone) %></td>
+        <td><%= link_to l(milestone.achieved_at, :format => :long), edit_user_milestone_path(@user, milestone) %></td>
         <td><%= milestone.type %></td>
         <td><%= milestone.value %></td>
         <td style="text-align: center;">

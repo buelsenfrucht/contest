@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729081551) do
+ActiveRecord::Schema.define(version: 20140730144047) do
 
   create_table "goals", force: true do |t|
     t.integer  "value"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140729081551) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_first"
   end
 
   add_index "milestones", ["type_id"], name: "index_milestones_on_type_id"

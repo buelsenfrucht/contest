@@ -7,17 +7,18 @@ class Milestone < ActiveRecord::Base
   validates :user, presence: true
   validates :value, presence: true
 
+  scope :for_user, ->(user) { where(user: user) }
+
   def value
     v = read_attribute(:value)
-    if self.type.name == 'weight'
+    if self.type and self.type.name == 'weight'
       v = v.to_f / 1000.0
     end
     return v
   end
 
   def value=(value)
-    Rails.logger.debug self.type.name
-    if self.type.name == 'weight'
+    if self.type and self.type.name == 'weight'
       value = value.to_f * 1000.0
     end
     write_attribute(:value, value.to_i)

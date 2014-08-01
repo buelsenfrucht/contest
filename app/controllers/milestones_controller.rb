@@ -1,13 +1,12 @@
 class MilestonesController < ApplicationController
 
   before_action :check_permission
-
   before_action :set_user
   before_action :set_milestone, only: [:show, :edit, :update, :destroy]
 
   # GET /milestones
   def index
-    @milestones = Milestone.order('created_at DESC').all
+    @milestones = Milestone.for_user(current_user).order('achieved_at DESC, created_at DESC').all
   end
 
   # GET /milestones/1
@@ -23,22 +22,44 @@ class MilestonesController < ApplicationController
   def edit
   end
 
+  def starting_point
+    @goal = Goal.find(params[:goal_id])
+    if milestone_params[:id].blank?
+      @milestone = Milestone.new(milestone_params)
+      @milestone.user = @user
+    else
+      @milestone = Milestone.find(milestone_params[:id])
+      @milestone.attributes = milestone_params
+    end
+    @milestone.value = milestone_params[:value]
+
+    if @milestone.save
+      redirect_to user_goals_url(@user), notice: 'First milestone was successfully saved.'
+    else
+      render 'goals/starting_point'
+    end
+  end
+
   # POST /milestones
   def create
     @milestone = Milestone.new(milestone_params)
     @milestone.user = @user
-    @milestone.achieved_at = Date.today
+    @milestone.achieved_at = Date.today if milestone_params[:achieved_at].blank?
+    @milestone.value = milestone_params[:value]
 
     if @milestone.save
       redirect_to user_milestones_url(@user), notice: 'Milestone was successfully created.'
     else
-      render :new
+        render :new
     end
   end
 
   # PATCH/PUT /milestones/1
   def update
-    if @milestone.update(milestone_params)
+    # setting :value after all other attributes because :type is needed to calculate :value
+    @milestone.attributes = milestone_params
+    @milestone.value = milestone_params[:value]
+    if @milestone.save
       redirect_to user_milestones_url(@user), notice: 'Milestone was successfully updated.'
     else
       render :edit
@@ -71,6 +92,6 @@ class MilestonesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def milestone_params
-      params.require(:milestone).permit(:achieved_at, :value, :type_id, :user_id)
+      params.require(:milestone).permit(:id, :value, :achieved_at, :type_id, :user_id, :is_first)
     end
 end
