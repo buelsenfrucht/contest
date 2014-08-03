@@ -15,7 +15,7 @@
 <% else %>
   <div class="stats">
     <div class="row">
-      <div class="col-xs-12 my-stat text-center">11%</div>
+      <div class="col-xs-12 my-stat text-center"><%= current_user.score.round(2) %>%</div>
     </div>
   </div>
 <% end %>
