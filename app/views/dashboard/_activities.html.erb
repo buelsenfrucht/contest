@@ -1,0 +1,13 @@
+<div class="activity-stream">
+  <h4>Aktivitäten</h4>
+  <% @activities.each do |activity| %>
+    <div class="activity">
+      <div class="ac-date">
+        <%= l activity.created_at.to_date, :format => :long %>, <strong><%= activity.user %></strong>
+      </div>
+      <div class="ac-body">
+        <%= truncate(activity.body, length: 50) %>
+      </div>
+    </div>
+  <% end %>
+</div>

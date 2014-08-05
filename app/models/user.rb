@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   def score
-    return nil if goals.size == 0
+    return 0.0 if goals.size == 0
     score = 0.0
     goals.each do |goal|
       score = score + goal.score

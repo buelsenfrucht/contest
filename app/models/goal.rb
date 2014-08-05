@@ -21,7 +21,10 @@ class Goal < ActiveRecord::Base
     last_milestone = milestones_per_type.last
     goal_diff = (self.value - first_milestone.send(:value)).abs
     current_diff = (last_milestone.send(:value) - first_milestone.send(:value)).abs
-    return ((current_diff.to_f / goal_diff.to_f) * 100)
+    score = ((current_diff.to_f / goal_diff.to_f) * 100)
+    return 0.0 if score < 0.0
+    return 100.0 if score > 100.0
+    return score
   end
 
   def value

@@ -1,0 +1,21 @@
+<% if @my_goals.size > 1  %>
+  <div class="stats">
+    <div class="row">
+      <div class="col-xs-8 my-stat text-center"><%= current_user.score.round(1) %>%</div>
+      <div class="col-xs-4 splitted-stats">
+        <% @my_goals.each do |goal| %>
+          <div class="split-stat">
+            <strong><%= goal.type %></strong><br/>
+            <%= goal.score.round(2) %> %
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="stats">
+    <div class="row">
+      <div class="col-xs-12 my-stat text-center"><%= current_user.score.round(2) %>%</div>
+    </div>
+  </div>
+<% end %>

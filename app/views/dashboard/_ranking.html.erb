@@ -1,0 +1,24 @@
+
+<div class="ranking">
+  <h4>Bestenliste</h4>
+  <table class="table">
+    <tr>
+      <th>Platz</th>
+      <th>User</th>
+      <th>Score</th>
+    </tr>
+    <% @ranking.each_with_index do |user, i| %>
+      <tr>
+        <td><%= i + 1 %>.</td>
+        <td><%= user.name %></td>
+        <td>
+          <%= user.score.round(2) %> %
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="<%= user.score.round(2) %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= user.score.round(2) %>%;">
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
