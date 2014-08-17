@@ -12,15 +12,9 @@
 
   <%= render 'navigation' %>
 
-  <div class="container">
+  <%= render 'messages' %>
 
-    <div class="row">
-      <div class="col-sm-12">
-        <% flash.each do |name, msg| %>
-          <%= content_tag :div, msg, :id => "flash#{name}" %>
-        <% end %>
-      </div>
-    </div>
+  <div class="container">
 
     <div class="row">
 

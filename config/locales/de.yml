@@ -20,6 +20,7 @@ de:
         type: Typ
         user: Benutzer
         value: Wert
+        achieved_at: Trainiert am
       goal:
         type: Typ
         user: Benutzer

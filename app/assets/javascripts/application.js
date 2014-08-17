@@ -16,3 +16,15 @@
 //= require bootstrap-switch.min
 //= require turbolinks
 //= require_tree .
+
+function ready()
+{
+  if ($('div.messages').size() > 0) {
+    setTimeout(function() {
+      $('div.messages').slideUp('slow');
+    }, 2000)
+  }
+}
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

@@ -14,7 +14,7 @@ class Goal < ActiveRecord::Base
   end
 
   def score
-    milestones_per_type = Milestone.for_user(self.user).where(type: self.type).order('created_at ASC').all
+    milestones_per_type = Milestone.for_user(self.user).where(type: self.type).order('achieved_at ASC, created_at ASC').all
     return 0.0 if milestones_per_type.blank? or milestones_per_type.size == 0
 
     first_milestone = milestones_per_type.first
