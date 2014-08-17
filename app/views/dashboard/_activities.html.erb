@@ -6,7 +6,7 @@
         <%= l activity.created_at.to_date, :format => :long %>, <strong><%= activity.user %></strong>
       </div>
       <div class="ac-body">
-        <%= truncate(activity.body, length: 50) %>
+        <%= truncate(activity.body, length: 100) %>
       </div>
     </div>
   <% end %>
