@@ -19,6 +19,7 @@ class MilestonesController < ApplicationController
   # GET /milestones/new
   def new
     @milestone = Milestone.new
+    @milestone.achieved_at = Date.today
   end
 
   # GET /milestones/1/edit
@@ -47,7 +48,6 @@ class MilestonesController < ApplicationController
   def create
     @milestone = Milestone.new(milestone_params)
     @milestone.user = @user
-    @milestone.achieved_at = Date.today if milestone_params[:achieved_at].blank?
     @milestone.value = milestone_params[:value]
 
     if @milestone.save
