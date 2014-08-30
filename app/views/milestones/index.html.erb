@@ -15,11 +15,19 @@
   <tbody>
     <% @milestones.each do |milestone| %>
       <tr>
-        <td><%= link_to l(milestone.achieved_at, :format => :long), edit_user_milestone_path(@user, milestone) %></td>
-        <td><%= milestone.type %></td>
+        <td><%= link_to l(milestone.achieved_at), edit_user_milestone_path(@user, milestone) %></td>
+        <td>
+          <% if @goals_by_type[milestone.type_id] %>
+            <%= @goals_by_type[milestone.type_id] %>
+          <% else %>
+            <%= milestone.type %>
+          <% end %>
+        </td>
         <td><%= milestone.value %></td>
         <td style="text-align: center;">
-          <%= link_to 'Löschen', user_milestone_path(@user, milestone), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+          <%= link_to user_milestone_path(@user, milestone), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
         </td>
       </tr>
     <% end %>

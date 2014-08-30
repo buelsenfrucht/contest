@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Aktivität</th>
+      <th>Datum</th>
       <th class="text-center" nowrap>Öffentlich</th>
       <th style="width: 50px;"></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @activities.each do |activity| %>
       <tr>
         <td><%= link_to truncate(activity.body, length: 50), [@user, activity] %></td>
+        <td><%= l activity.created_at.to_date %></td>
         <td class="text-center" nowrap><%= activity.publish ? 'Ja' : 'Nein' %></td>
         <td class="text-center">
           <%= link_to [@user, activity], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' do %>

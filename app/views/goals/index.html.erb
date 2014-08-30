@@ -5,10 +5,10 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>Typ</th>
-      <th>Ziel</th>
+      <th>Bezeichnung</th>
       <th>Start</th>
-      <th style="width: 210px; text-align: center;"></th>
+      <th>Ziel</th>
+      <th style="width: 100px; text-align: center;" nowrap></th>
     </tr>
   </thead>
 
@@ -16,12 +16,14 @@
     <% @goals.each do |goal| %>
       <% milestone = goal.first_milestone %>
       <tr>
-        <td><%= goal.type %></td>
-        <td><%= goal.value %></td>
+        <td><%= link_to goal.to_s, edit_user_goal_path(@user, goal) %></td>
         <td><%= "#{milestone.value}" if milestone %></td>
-        <td>
-          <%= link_to 'Startpunkt', user_goal_starting_point_path(@user, goal), class: 'btn btn-primary btn-sm' %>
-          <%= link_to 'Löschen', [@user, goal], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        <td><%= goal.value %></td>
+        <td nowrap>
+          <%= link_to 'Start', user_goal_starting_point_path(@user, goal), class: 'btn btn-primary' %>
+          <%= link_to [@user, goal], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+            <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
         </td>
       </tr>
     <% end %>

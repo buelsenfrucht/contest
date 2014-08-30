@@ -5,6 +5,7 @@ de:
   types:
     points: Punkte
     weight: Gewicht
+    count: Anzahl
   activerecord:
     models:
       activity: Aktivität
@@ -16,12 +17,14 @@ de:
       activity:
         body: Aktivität
         publish: Öffentlich?
+        created_at: Trainiert am
       milestone:
         type: Typ
         user: Benutzer
         value: Wert
         achieved_at: Trainiert am
       goal:
+        title: Bezeichnung
         type: Typ
         user: Benutzer
         value: Wert

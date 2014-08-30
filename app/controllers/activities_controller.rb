@@ -16,6 +16,7 @@ class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new
     @activity.publish = true
+    @activity.created_at = Date.today
   end
 
   # GET /activities/1/edit
@@ -57,6 +58,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def activity_params
-      params.require(:activity).permit(:body, :publish)
+      params.require(:activity).permit(:body, :publish, :created_at)
     end
 end

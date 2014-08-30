@@ -6,5 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Type.create(name: 'points')
-Type.create(name: 'weight')
+Type.create(name: 'points') if Type.find_by_name('points').nil?
+Type.create(name: 'weight') if Type.find_by_name('weight').nil?
+Type.create(name: 'count')  if Type.find_by_name('count').nil?

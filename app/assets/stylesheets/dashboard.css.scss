@@ -17,6 +17,15 @@ $myBorderColor: #e7e7e7;
     line-height: 80px;
     vertical-align: middle;
     padding: 20px;
+
+    &.goal-count-3 {
+      height: 180px;
+      line-height: 140px;
+    }
+    &.goal-count-4 {
+      height: 240px;
+      line-height: 200px;
+    }
   }
 
   .splitted-stats {
@@ -27,18 +36,25 @@ $myBorderColor: #e7e7e7;
     .split-stat {
       text-align: center;
       height: 50%;
-      border: 1px solid $myBorderColor;
+      border-bottom: 1px solid $myBorderColor;
+      border-left:   1px solid $myBorderColor;
+      border-right:  1px solid $myBorderColor;
       width: 100%;
       padding: 10px;
       &:first-child {
-        border-bottom: none;
+        border-top:  1px solid $myBorderColor;
       }
+    }
+
+    .stat-2, .stat-3, .stat-4 {
+      height: 60px;
     }
   }
 }
 
 .ranking {
   padding-top: 15px;
+  clear: both;
 
   .progress {
     height: 10px;

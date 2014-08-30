@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :activities
     resources :milestones, :except => :show
-    resources :goals, :except => [:show, :update, :edit] do
+    resources :goals, :except => :show do
       get 'starting_point'
       post 'starting_point' => 'milestones#starting_point'
     end

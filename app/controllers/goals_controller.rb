@@ -1,7 +1,7 @@
 class GoalsController < ApplicationController
   include UserPermission, UserDependent
 
-  before_action :set_goal, only: [:show, :destroy]
+  before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
   # GET /goals
   def index
@@ -15,6 +15,10 @@ class GoalsController < ApplicationController
   # GET /goals/new
   def new
     @goal = Goal.new
+  end
+
+  # GET /goals/1/edit
+  def edit
   end
 
   # GET /goals/1/starting_point
@@ -39,6 +43,15 @@ class GoalsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /goals/1
+  def update
+    if @goal.update(goal_params)
+      redirect_to user_goals_path(@user), notice: 'Goal was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   # DELETE /goals/1
   def destroy
     @goal.destroy
@@ -54,6 +67,6 @@ class GoalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def goal_params
-      params.require(:goal).permit(:type_id, :user_id, :value)
+      params.require(:goal).permit(:title, :type_id, :user_id, :value)
     end
 end

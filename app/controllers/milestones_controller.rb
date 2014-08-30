@@ -6,6 +6,9 @@ class MilestonesController < ApplicationController
 
   # GET /milestones
   def index
+    @goals_by_type = Goal.for_user(current_user).each_with_object({}) do |goal, h|
+      h.merge!({ goal.type.id => goal })
+    end
     @milestones = Milestone.for_user(current_user).order('achieved_at DESC, created_at DESC').all
   end
 

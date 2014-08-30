@@ -41,4 +41,9 @@ class Goal < ActiveRecord::Base
     end
     write_attribute(:value, value.to_i)
   end
+
+  def to_s
+    return title unless title.blank?
+    type
+  end
 end
