@@ -9,6 +9,7 @@ With this application you can compete with friends for anything you want (weight
 Everyone taking part in the competition can set their own goal(s) for a given time.
 
 For example if you compete for 90 days, you could set your goals to:
+
 * losing 5kg of weight
 * going for a run for at least 25 times
 * 10.000 freeletics points
@@ -22,6 +23,7 @@ Requirements:
 * sqlite3
 
 Classical rails setup:
+
 1. clone the repo
 2. cd into directory
 3. bundle install
@@ -29,7 +31,7 @@ Classical rails setup:
 5. bundle exec rake db:seed (check seed file first)
 6. Optional: Set timezone and locale in application.rb (current languages: de and en)
 7. Optional?: As I made that app for a competition with close friends, I seeded users too, so there is no user administration yet
-7. bundle exec rails server
+8. bundle exec rails server
 
 ## The application
 
